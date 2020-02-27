@@ -9,6 +9,11 @@ code = {"DELETE": 46, "ENTER": 13, "1": 46, "NUM_PAD_1": 97, "9": 57, "NUM_PAD_9
 
 
 class Grid:
+    """
+    class that represent the board itself(grid).
+    this class holds an instance of each cube on the grid with it's properties and the values
+
+    """
     board = [
         [7, 8, 0, 4, 0, 0, 1, 2, 0],
         [6, 0, 0, 0, 7, 5, 0, 0, 9],
@@ -22,6 +27,13 @@ class Grid:
     ]
 
     def __init__(self, rows, cols, width, height, canvas):
+        """
+        :param rows: the number of row in the grid
+        :param cols: the number of cols in the grid
+        :param width: width of the board
+        :param height: height of the board
+        :param canvas: the canvas we are drawing on
+        """
         self.rows = rows
         self.cols = cols
         self.width = width
