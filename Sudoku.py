@@ -2,7 +2,7 @@
 def solve_board(board):
     """
     backtracking recursion that solve a sudoku board
-    :param board:
+    :param board: the board to solve
     :return: if board is solvable returns true, otherwise return false.
     """
     empty_space = find_empty_space(board)
