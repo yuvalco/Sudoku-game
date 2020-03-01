@@ -5,7 +5,7 @@ from Sudoku import solve_board, valid
 # dict that indicates whether a cube is selected or not and it's row and col.
 selected = None
 # key codes for keys
-code = {"DELETE": 46, "ENTER": 13, "1": 46, "NUM_PAD_1": 97, "9": 57, "NUM_PAD_9": 105}
+code = {"DELETE": 46, "ENTER": 13, "1": 49, "NUM_PAD_1": 97, "9": 57, "NUM_PAD_9": 105}
 
 
 class Grid:
@@ -55,6 +55,12 @@ class Grid:
             canvas.create_line(gap * i, 0, gap * i, self.height, width=width, fill="black")
             canvas.create_line(0, gap * i, self.width, gap * i, width=width, fill="black")
 
+    def __repr__(self):
+        return f"grid board with {self.cubes} in it"
+
+    def __str__(self):
+        return f"grid board with {len(self.cubes)} on {len(self.cubes[0])} cubes in it"
+
     def select(self, position):
         gap = self.width / 9
         i, j = int(position.y / gap) % 9, int(position.x / gap) % 9
@@ -66,7 +72,6 @@ class Grid:
         called when an event of key pressed is fired
         :param key: the key that was pressed
         """
-
         # checks if some cube is selected
         if selected["is_selected"]:
             row = self.selected_cube_data["row"]
