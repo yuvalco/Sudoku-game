@@ -1,11 +1,14 @@
 import tkinter
+
 from Cube import Cube
-from Sudoku import solve_board, valid
+from Sudoku import *
 
 # dict that indicates whether a cube is selected or not and it's row and col.
 selected = None
 # key codes for keys
 code = {"DELETE": 46, "ENTER": 13, "1": 49, "NUM_PAD_1": 97, "9": 57, "NUM_PAD_9": 105}
+
+grid = None
 
 
 class Grid:
@@ -64,7 +67,7 @@ class Grid:
     def select(self, position):
         gap = self.width / 9
         i, j = int(position.y / gap) % 9, int(position.x / gap) % 9
-        self.selected_cube_data = self.cubes[i][j].select(self.canvas)
+        self.selected_cube_data = self.cubes[i][j].select()
         globals()['selected'] = self.selected_cube_data
 
     def key_pressed(self, key):
@@ -111,6 +114,14 @@ class Grid:
                             self.cubes[row][col].value = self.cubes[row][col].temp
 
 
+def solve_with_animation():
+    """
+    called when we click the solve button.
+    used to animate the recursion that is solving the board.
+    """
+    solve_board(grid.board, grid)
+
+
 def main():
     window_width = 540
     window_height = 600
@@ -126,11 +137,17 @@ def main():
     window.resizable(0, 0)
 
     canvas = tkinter.Canvas(window, height=window_height - bottom_margin, width=window_width)
-    board = Grid(gird_size, gird_size, window_width, window_height, canvas)
+    globals()['grid'] = Grid(gird_size, gird_size, window_width, window_height, canvas)
+
+    button = tkinter.Button(window, text="Simulate solving", command=solve_with_animation)
+    # places the button at the bottom of the screen in the middle.
+    button.place(relx=0.5, rely=0.976, anchor='center')
+
     # subscribing to events
-    canvas.bind("<Button-1>", board.select)
-    window.bind("<Key>", board.key_pressed)
+    canvas.bind("<Button-1>", grid.select)
+    window.bind("<Key>", grid.key_pressed)
     canvas.pack()
+
     window.mainloop()
 
 
