@@ -66,28 +66,31 @@ class Cube:
 
     @value.setter
     def value(self, value):
-        self.cube_text = self.canvas.create_text((self.x + self.end_x) / 2, (self.y + self.end_y) / 2, fill="black",
-                                                 font="Times 20",
-                                                 text=value)
+        if value is not 0:
+            self.cube_text = self.canvas.create_text((self.x + self.end_x) / 2, (self.y + self.end_y) / 2, fill="black",
+                                                     font="Times 20",
+                                                     text=value)
+        else:
+            self.delete_text()
         self._value = value
+        self.canvas.update()
 
-    def select(self, canvas):
+    def select(self):
         """
         highlighting the selected cube with a red rectangle and sets the cube as selected.
         if already selected than the function deselect the cube.
-        :param canvas: our main canvas we are drawing on.
         :returns whether the cube was selected(true) or deselected(false), the row, and col of the cube.
         """
         if self.selected:
             self.selected = False
-            canvas.delete(self.rect)
+            self.canvas.delete(self.rect)
         else:
-            canvas.delete(globals()['lastCubeSelected'])
-            globals()['lastCubeSelected'] = self.rect = canvas.create_rectangle(self.x, self.y, self.end_x,
-                                                                                self.end_y,
-                                                                                width=3, outline="red")
+            self.canvas.delete(globals()['lastCubeSelected'])
+            globals()['lastCubeSelected'] = self.rect = self.canvas.create_rectangle(self.x, self.y, self.end_x,
+                                                                                     self.end_y,
+                                                                                     width=3, outline="red")
             self.selected = True
-
+        self.canvas.update()
         return {"is_selected": self.selected, "row": self.row, "col": self.col}
 
     def draw_temp_num(self, value):
