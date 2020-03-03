@@ -1,7 +1,10 @@
+import time
 
-def solve_board(board):
+
+def solve_board(board, grid=None):
     """
     backtracking recursion that solve a sudoku board
+    :param grid: the grid itself (used only when we animate the recursion)
     :param board: the board to solve
     :return: if board is solvable returns true, otherwise return false.
     """
@@ -17,10 +20,22 @@ def solve_board(board):
         if valid(board, empty_space, value):
             board[i][j] = value
 
-            if solve_board(board):
+            if grid is not None:
+                # animating the recursion
+                grid.cubes[i][j].select()
+                grid.cubes[i][j].value = value
+                time.sleep(0.1)
+
+            if solve_board(board, grid):
                 return True
 
             board[i][j] = 0
+
+            if grid is not None:
+                # animating the recursion
+                grid.cubes[i][j].select()
+                grid.cubes[i][j].value = 0
+                time.sleep(0.1)
 
     return False
 
