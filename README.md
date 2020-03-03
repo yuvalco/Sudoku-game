@@ -1,7 +1,7 @@
 # Sudoku-game
 A Sudoku game that checks if you are right by using backtracking algorithm to solve the board.
 
-# Demonstration of backtracking
+## Demonstration of backtracking
 ![gif](https://github.com/yuvalco/Sudoku-game/blob/master/sudoku.gif)
 
 ### GUI.py
