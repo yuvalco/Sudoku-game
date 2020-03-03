@@ -1,6 +1,9 @@
 # Sudoku-game
 A Sudoku game that checks if you are right by using backtracking algorithm to solve the board.
 
+# Demonstration of backtracking
+![gif](https://github.com/yuvalco/Sudoku-game/blob/master/sudoku.gif)
+
 ### GUI.py
 Contains everything related to the ui.  
 Has class called grid that contains an instance of each cube on the board.  
@@ -16,6 +19,7 @@ Solves a given board by backtracking algorithm that checks each and every poassi
 Checks whether a given value in a given location is valid for a spesfic board.
 #### find_empty_space(board)
 Searches for empty location on the board.
+
 
 # Images
 ### Board
