@@ -1,5 +1,10 @@
-# Sudoku-game
-A Sudoku game that checks if you are right by using backtracking algorithm to solve the board.
+# Introduction
+This is a simple Sudoku solver application developed as a personal project. The application is written in Python and utilizes the backtracking recursion algorithm to solve Sudoku puzzles. It provides a user-friendly graphical user interface (GUI) for users to input and solve Sudoku puzzles.
+
+# Features
+Sudoku Solver: The application can solve standard 9x9 Sudoku puzzles using the backtracking algorithm, ensuring a valid and complete solution.
+
+Interactive GUI: Users can interact with the Sudoku solver through a graphical user interface, making it easy and intuitive to input and solve puzzles.
 
 ## Demonstration of backtracking
 ![gif](https://github.com/yuvalco/Sudoku-game/blob/master/sudoku.gif)
